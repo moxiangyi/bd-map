@@ -1,0 +1,170 @@
+<div class="detail-page">
+  <div class="header">编辑查看详情</div>
+  
+  <form class="form" [formGroup]="form">
+    <div>
+      <span class="red">*</span>
+      <mat-form-field class="input">
+        <label matPrefix>
+          <mat-icon>business</mat-icon>
+          单位名称：
+        </label>
+        <input matInput formControlName="companyName">
+      </mat-form-field>
+    </div>
+    <div>
+      <span class="red">*</span>
+      <mat-form-field class="input">
+        <label matPrefix>
+        <mat-icon matSuffix aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+        仓库名：</label>
+        <input matInput formControlName="warehouseName">
+      </mat-form-field>
+    </div>
+    <div>
+      <span class="red">*</span>
+      <mat-form-field class="input">
+        <label matPrefix>
+        <mat-icon>contacts</mat-icon>
+        联系人：</label>
+        <input matInput formControlName="contacts">
+      </mat-form-field>
+    </div>
+    <!-- <button mat-button> mat-button </button> -->
+    <div>
+      <span class="red">*</span>
+      <mat-form-field class="input">
+        <label matPrefix>
+          <mat-icon >phone</mat-icon>电话：</label>
+        <input matInput formControlName="phone">
+      </mat-form-field>
+    </div>
+    <div>
+      <span class="red">*</span>
+      <!-- <mat-form-field class="input">
+        <label matPrefix>地址：</label>
+        <input matInput formControlName="location">
+      </mat-form-field> -->
+      <mat-form-field class="example-full-width">
+        <label matPrefix>
+          <mat-icon>location_on</mat-icon>
+          地址：
+        </label>
+        <!-- <mat-label>请输入地址：</mat-label> -->
+        <input type="text" matInput formControlName="location"  [title]="form.value.location" [matAutocomplete]="auto" (input)="searchLocation()">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"  (optionSelected)="selected(e)">
+          <mat-option *ngFor="let option of filteredOptions" [value]="option" title="{{option.address_title}}">
+            {{option.address_title}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <!-- <div>
+      <span class="red">*</span>
+      <mat-form-field class="input">
+        <label matPrefix>经度：</label>
+        <input matInput formControlName="x">
+      </mat-form-field>
+    </div>
+    <div>
+      <span class="red">*</span>
+      <mat-form-field class="input">
+        <label matPrefix>纬度：</label>
+        <input matInput formControlName="y">
+      </mat-form-field>
+    </div> -->
+    <!-- <div class="col-1">
+      <span class="red">*</span>
+      <mat-form-field class="select">
+        <label matPrefix>：</label>
+        <mat-select formControlName="firstType" (selectionChange)="onSelectDataSet($event.value)">
+          <mat-option *ngFor="let dc of firstTypeList" [value]="dc">
+            {{dc.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div> -->
+  </form>
+  <table class="table" border="1">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>种类</th>
+        <th>物资名称</th>
+        <th>型号/规格</th>
+        <th>单位</th>
+        <th>数量</th>
+        <th>入库时间</th>
+        <th>使用期限</th>
+        <th>负责人</th>
+        <th>联系电话</th>
+        <th class="width-6rem">备注</th>
+        <th class="width-6rem">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of childTypeList; let index = index">
+        <td align="center">
+          {{index + 1}}
+        </td>
+        <td align="center">{{typeName}}
+          <span *ngIf="!item.isEdit">{{item.parentTypeName}}</span>
+          <!-- <mat-form-field> -->
+          <input matInput *ngIf="item.isEdit" [(ngModel)]="item.parentTypeName" />
+        <!-- </mat-form-field> -->
+        </td>
+        <td align="center">
+          <span *ngIf="!item.isEdit">{{item.name}}</span>
+          <input matInput *ngIf="item.isEdit" [(ngModel)]="item.name" />
+        </td>
+        <td align="center">
+          <span *ngIf="!item.isEdit">{{item.brand}}</span>
+          <input matInput *ngIf="item.isEdit" [(ngModel)]="item.brand" />
+        </td>
+        <td align="center">
+          <span *ngIf="!item.isEdit">{{item.number}}</span>
+          <input matInput *ngIf="item.isEdit" [(ngModel)]="item.number" />
+        </td>
+        <td align="center">
+          <span *ngIf="!item.isEdit">{{item.unitPrice}}</span>
+          <input matInput *ngIf="item.isEdit" [(ngModel)]="item.unitPrice" />
+        </td>
+        <td align="center">
+          <span *ngIf="!item.isEdit">{{item.warehousingTime}}</span>
+          <input matInput *ngIf="item.isEdit" [(ngModel)]="item.warehousingTime" />
+        </td>
+        <td align="center"><span *ngIf="!item.isEdit">{{item.serviceLife}}</span>
+          <input matInput *ngIf="item.isEdit" [(ngModel)]="item.serviceLife" />
+        </td>
+        <td align="center">
+          <span *ngIf="!item.isEdit">{{item.contacts}}</span>
+          <input matInput *ngIf="item.isEdit" [(ngModel)]="item.contacts" />
+        </td>
+        <td align="center">
+          <span *ngIf="!item.isEdit">{{item.phone}}</span>
+          <input matInput *ngIf="item.isEdit" [(ngModel)]="item.phone" />
+        </td>
+        <td align="center"><span *ngIf="!item.isEdit">{{item.description}}</span>
+          <input matInput *ngIf="item.isEdit" [(ngModel)]="item.description" />
+        </td>
+        <td class="width-10rem">
+          <!-- <input class="hidden" /> -->
+          <mat-icon class="edit" matTooltip="编辑" *ngIf="!item.isEdit" (click)="item.isEdit=!item.isEdit">edit</mat-icon>
+          <mat-icon class="save" matTooltip="保存" *ngIf="item.isEdit" (click)="item.isEdit=!item.isEdit">save</mat-icon>
+          <mat-icon class="delate" matTooltip="删除" (click)="deleteRow(item, index)">delete</mat-icon>
+          <mat-icon class="add" matTooltip="添加" *ngIf="index == childTypeList.length - 1" (click)="addRow(item)">add</mat-icon>
+          <!-- <span class="operate-btn edit" *ngIf="!item.isEdit" (click)="item.isEdit=!item.isEdit">编辑</span>
+          <span class="operate-btn save" *ngIf="item.isEdit" (click)="item.isEdit=!item.isEdit">保存</span>
+          <span class="operate-btn delate" (click)="deleteRow(item, index)">删除</span>
+          <span class="operate-btn add" *ngIf="index == childTypeList.length - 1" (click)="addRow(item)">添加</span> -->
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+  <div class="bottom">
+    <button mat-button color="primary" class="save-btn" (click)="save()">保存</button>
+    <button mat-button class="cancel-btn m-l-1" (click)="cancel()">取消</button>
+    <button mat-button class="delate-btn m-l-1" (click)="delete()">删除</button>
+  </div>
+</div>

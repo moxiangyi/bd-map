@@ -1,0 +1,86 @@
+.detail-page {
+  padding: 1rem;
+}
+
+.header {
+  font-size: 2rem;
+}
+
+.table {
+  width: 100%;
+}
+
+tr {
+  height: 2rem;
+}
+
+.operate-btn {
+  padding: 2px 5px;
+  cursor: pointer;
+  color: #fff;
+  margin-left: 5px;
+}
+
+.delate {
+  color: #f145bb;
+}
+
+.add,
+.save {
+  color: #37c19d;
+}
+
+.edit {
+  color: #3782b1;
+}
+
+.bottom {
+  margin-top: 3rem;
+  text-align: right;
+}
+
+.mat-button {
+  color: #fff
+}
+
+.save-btn {
+  background: #37c19d;
+}
+
+.delate-btn {
+  background: #f145bb;
+}
+
+.cancel-btn {
+  color: rgba(0, 0, 0, 0.87);
+  border: solid #ddd 1px;
+}
+
+.m-l-1 {
+  margin-left: 1rem;
+}
+
+.form .mat-form-field {
+  width: 20rem;
+}
+
+.mat-form-field .mat-icon {
+  position: relative;
+  top: 5px;
+}
+
+.hidden {
+  /* display: none; */
+  visibility: hidden;
+}
+.width-6rem {
+  width: 6rem;
+}
+
+table input {
+  border-bottom: 1px solid #ddd;
+}
+
+table .mat-icon {
+  cursor: pointer;
+}

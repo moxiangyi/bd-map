@@ -1,0 +1,62 @@
+<section class="pages">
+  <button mat-button type="button" class="add m-l-1" id="ss" (click)="create()">添加仓库</button>
+  <form [formGroup]="form" class="form">
+    <span class="red"></span>
+    <mat-form-field class="input" id="ss">
+      <label matPrefix>仓库点覆盖半径(米)：</label>
+      <input type="number" matInput formControlName="radius">
+    </mat-form-field>
+    <!-- <mat-form-field class="select">
+      <label matPrefix>检索仓库点：</label>
+      <mat-select formControlName="warehouseName" (selectionChange)="onSelectDataSet($event.value)">
+        <mat-option *ngFor="let dc of pointDataInfo" [value]="dc">
+          {{dc.warehouseName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+    <span class="red"></span>
+    <style>
+      #ss {
+        font-size: 20px;
+        font-weight: 900;
+      }
+
+    </style>
+    <mat-form-field class="input" id="ss">
+      <label matPrefix>物资名称：</label>
+      <input matInput formControlName="materialName">
+    </mat-form-field>
+    <button mat-button type="button" class="add m-l-1" value="查询" id="ss" (click)="theLocation()">查询</button>
+    <button mat-button type="button" class="add m-l-1" value="重置" id="reset" (click)="reset()">重置</button>
+    <button mat-button type="button" class="logout m-l-1" value="退出" id="logout" (click)="logout()">退出</button>
+    <!-- <div class="buttons" matTooltip="退出登录" matTooltipPosition="left" (click)="logout()">
+      <mat-icon class="fake-center">power_settings_new</mat-icon>
+    </div> -->
+  </form>
+</section>
+<section>
+  <mat-tab-group mat-align-tabs="start" [selectedIndex]="currentIndex"
+    (selectedIndexChange)="selectedIndexChange($event)">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+        应急物资仓库
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Second">
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+        应急队伍
+      </ng-template>
+      应急队伍内容~~~
+    </mat-tab>
+    <mat-tab label="Third">
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+        风险隐患点
+      </ng-template>
+      风险隐患点~~~
+    </mat-tab>
+  </mat-tab-group>
+</section>
+<div [hidden]="currentIndex != 0" id="map" class="map" style="width:100%;height: 100%"></div>

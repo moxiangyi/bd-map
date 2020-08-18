@@ -1,0 +1,27 @@
+.pages {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed #c9c9c9;
+}
+.add {
+  background: #37c19d;
+  color: #fff;
+  padding: 0px 10px;
+  height: 2rem;
+  line-height: 2rem;
+  // margin-bottom: 1rem;
+}
+
+.m-l-1 {
+  margin-left: 1rem;
+}
+
+.map {
+  width: 100%;
+  height: calc(100% - 5rem) !important;
+}
+
+.form {
+  text-align: right;
+}

@@ -1,0 +1,45 @@
+<section class="pages">
+  <button mat-button type="button" class="add m-l-1" (click)="create()">添加仓库</button>
+  <form [formGroup]="form" class="form">
+    <!-- <mat-form-field class="select">
+      <label matPrefix>检索仓库点：</label>
+      <mat-select formControlName="warehouseName" (selectionChange)="onSelectDataSet($event.value)">
+        <mat-option *ngFor="let dc of pointDataInfo" [value]="dc">
+          {{dc.warehouseName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+      <span class="red">*</span>
+      <mat-form-field class="input">
+        <label matPrefix>物资名称：</label>
+        <input matInput formControlName="materialName">
+      </mat-form-field>
+    <button mat-button type="button" class="m-l-1" value="查询" (click)="theLocation()">查询</button>
+    <button mat-button type="button" class="" value="重置" (click)="reset()">重置</button>
+  </form>  
+</section>
+<section>
+  <mat-tab-group mat-align-tabs="start" [selectedIndex]="currentIndex" (selectedIndexChange)="selectedIndexChange($event)">
+    <mat-tab >
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+        应急物资仓库
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Second">
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+        应急队伍
+      </ng-template>
+      应急队伍内容~~~
+    </mat-tab>
+    <mat-tab label="Third">
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+        风险隐患点
+      </ng-template>
+      风险隐患点~~~
+    </mat-tab>
+  </mat-tab-group>
+</section>
+<div [hidden]="currentIndex != 0" id="map" class="map" style="width:100%;height: 100%"></div>
